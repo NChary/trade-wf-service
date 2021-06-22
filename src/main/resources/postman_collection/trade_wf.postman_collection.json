@@ -1,0 +1,102 @@
+{
+	"variables": [],
+	"info": {
+		"name": "trade_wf",
+		"_postman_id": "b4c75963-09cd-2f1d-6c75-99080db560d0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Customer",
+			"request": {
+				"url": "localhost:8080/v1/customer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customerId\":\"102\",\n\t\"customerName\":\"Chary\",\n\t\"emailId\":\"chary@gmail.com\",\n\t\"address\":\"HYD\",\n\t\"contactNumber\":\"954654899\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer",
+			"request": {
+				"url": "localhost:8080/v1/customer",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"url": "localhost:8080/v1/customer",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customerId\":\"103\",\n\t\"customerName\":\"Chary\",\n\t\"emailId\":\"chary@gmail.com\",\n\t\"address\":\"USA\",\n\t\"contactNumber\":\"9999999999\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer",
+			"request": {
+				"url": "localhost:8080/v1/customer",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customerId\":\"103\",\n\t\"customerName\":\"Chary\",\n\t\"emailId\":\"chary@gmail.com\",\n\t\"address\":\"USA\",\n\t\"contactNumber\":\"9999999999\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer By ID",
+			"request": {
+				"url": "localhost:8080/v1/customer/102",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
