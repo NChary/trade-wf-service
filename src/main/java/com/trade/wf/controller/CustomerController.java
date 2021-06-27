@@ -2,6 +2,8 @@ package com.trade.wf.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.trade.wf.model.ApiResponse;
 import com.trade.wf.model.Customer;
 import com.trade.wf.service.CustomerService;
 
@@ -30,7 +33,7 @@ public class CustomerController {
 	
 	//Save - http - Header and Body posting service
 	@PostMapping("/customer")
-	public String saveCustomerData(@RequestBody Customer customer) {
+	public ApiResponse saveCustomerData(@Valid @RequestBody Customer customer) {
 		return customerService.saveCustomer(customer);
 	}
 	

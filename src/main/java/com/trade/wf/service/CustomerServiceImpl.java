@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.trade.wf.model.ApiResponse;
 import com.trade.wf.model.Customer;
 import com.trade.wf.repo.CustomerRepository;
+import com.trade.wf.util.TradeWfUtil;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -15,9 +17,9 @@ public class CustomerServiceImpl implements CustomerService{
 	CustomerRepository custRepository;
 	
 	@Override
-	public String saveCustomer(Customer customer) {
+	public ApiResponse saveCustomer(Customer customer) {
 		custRepository.save(customer);
-		return "Service : "+customer.getCustomerName();
+		return TradeWfUtil.buildApiResponse("000", "SUCCESS", "Successfully saved customer");
 	}
 
 	@Override
