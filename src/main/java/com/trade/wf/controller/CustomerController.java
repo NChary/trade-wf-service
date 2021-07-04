@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,9 +24,16 @@ import com.trade.wf.service.CustomerService;
 public class CustomerController {
 
 	//Instance or reference of CustomerService
-	@Autowired
-	CustomerService customerService;
+	@Autowired // Object of a class CustomerService object = new CustomerService();  Memory will be created on JVM;  Spring Core Continer
+	@Qualifier("customer")
+	CustomerService customerService; // It will go to Database
 	
+	
+	@Autowired
+	@Qualifier("customertest")
+	CustomerService customerService1; // Returning from method only
+	
+		
 	@GetMapping("/greet")
 	public String greeting() {
 		return "CustomerController";
@@ -57,6 +65,10 @@ public class CustomerController {
 		return customerService.deleteCustomerById(custId);
 	}
 	
+	@GetMapping("/customer/{address}")
+	public List<Customer> getAllCustomersByAddress(@PathVariable final String address){
+		return customerService.getAllCustDetailsByAddress(address);
+	}
 }
 
 

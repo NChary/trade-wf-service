@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -33,4 +34,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
 	}
+	
+	
+	@ExceptionHandler(value=CustomerNotFoundException.class)
+	public ApiResponse handleCustomerNotFoundException(CustomerNotFoundException exception) {
+		return TradeWfUtil.buildApiResponse("9001", "FAIL", exception.getMessage());
+	}
+	
 }
